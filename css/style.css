@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* MAIN CARD */
+.card {
+  width: 360px;
+  padding: 30px;
+  border-radius: 25px;
+  background: rgba(17,24,39,0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+  text-align: center;
+}
+
+/* TITLE */
+.title {
+  font-size: 18px;
+  opacity: 0.7;
+}
+
+/* TASK INPUT */
+.task {
+  margin: 15px 0;
+}
+
+.task input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  background: #1f2937;
+  color: white;
+  outline: none;
+}
+
+/* CIRCLE TIMER */
+.circle {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 20px auto;
+}
+
+svg {
+  transform: rotate(-90deg);
+}
+
+circle {
+  fill: none;
+  stroke-width: 10;
+}
+
+.bg {
+  stroke: #1f2937;
+}
+
+.progress {
+  stroke: #f97316;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear;
+}
+
+/* TIME TEXT */
+.time {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* CONTROLS */
+.controls button {
+  margin: 5px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  background: #f97316;
+  color: white;
+  cursor: pointer;
+}
+
+/* CUSTOM TIME */
+.custom input {
+  width: 60px;
+  padding: 5px;
+  border-radius: 8px;
+  border: none;
+  text-align: center;
+  background: #1f2937;
+  color: white;
+}
+
+.sessions {
+  margin-top: 15px;
+  opacity: 0.7;
+}

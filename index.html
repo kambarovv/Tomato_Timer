@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Focus OS</title>
+<link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="title">🍅 Focus OS</div>
+
+  <!-- Task -->
+  <div class="task">
+    <input id="taskInput" placeholder="What are you working on?"/>
+  </div>
+
+  <!-- Timer -->
+  <div class="circle">
+    <svg width="200" height="200">
+      <circle class="bg" cx="100" cy="100" r="90"/>
+      <circle class="progress" id="progress" cx="100" cy="100" r="90"/>
+    </svg>
+    <div class="time" id="time">25:00</div>
+  </div>
+
+  <!-- Custom Time -->
+  <div class="custom">
+    <input id="minutes" value="25"> min
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button onclick="start()">Start</button>
+    <button onclick="pause()">Pause</button>
+    <button onclick="reset()">Reset</button>
+  </div>
+
+  <!-- Sessions -->
+  <div class="sessions">
+    🔥 Sessions: <span id="sessions">0</span>
+  </div>
+
+</div>
+
+<script src="./js/script.js"></script>
+
+</body>
+</html>
