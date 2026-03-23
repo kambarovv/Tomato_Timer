@@ -1,48 +1,67 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   background: radial-gradient(circle at top, #0f172a, #020617);
   color: white;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.container {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
-/* MAIN CARD */
-.card {
+.boxes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box {
+  margin: 10px 0;
   width: 360px;
-  padding: 30px;
-  border-radius: 25px;
-  background: rgba(17,24,39,0.6);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
   text-align: center;
 }
 
-/* TITLE */
-.title {
-  font-size: 18px;
+.head_box {
+  margin-bottom: 20px;
+}
+
+.head_day {
+  margin-top: 10px;
   opacity: 0.7;
 }
 
-/* TASK INPUT */
-.task {
-  margin: 15px 0;
-}
-
 .task input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 12px;
+  width: 85%;
+  padding: 12px;
+  border-radius: 15px;
   border: none;
   background: #1f2937;
   color: white;
   outline: none;
 }
 
-/* CIRCLE TIMER */
 .circle {
   position: relative;
   width: 200px;
@@ -69,7 +88,6 @@ circle {
   transition: stroke-dashoffset 1s linear;
 }
 
-/* TIME TEXT */
 .time {
   position: absolute;
   top: 50%;
@@ -79,29 +97,58 @@ circle {
   font-weight: bold;
 }
 
-/* CONTROLS */
+.custom {
+  margin-bottom: 20px;
+}
+
+.custom input {
+  width: 70px;
+  padding: 8px;
+  border-radius: 12px;
+  border: none;
+  text-align: center;
+  background: #1f2937;
+  color: white;
+  outline: none;
+}
+
 .controls button {
   margin: 5px;
   padding: 10px 14px;
   border-radius: 12px;
   border: none;
-  background: #f97316;
-  color: white;
-  cursor: pointer;
-}
-
-/* CUSTOM TIME */
-.custom input {
-  width: 60px;
-  padding: 5px;
-  border-radius: 8px;
-  border: none;
-  text-align: center;
   background: #1f2937;
   color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.controls button:hover {
+  transform: scale(1.05);
+  background: #f97316;
 }
 
 .sessions {
   margin-top: 15px;
-  opacity: 0.7;
+  opacity: 0.8;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+}
+
+footer a {
+  color: white;
+  font-size: 12px;
+  padding: 8px 12px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .box {
+    width: 90%;
+  }
 }

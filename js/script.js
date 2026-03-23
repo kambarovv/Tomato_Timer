@@ -5,36 +5,56 @@ let sessions = 0;
 
 const progress = document.getElementById("progress");
 const timeEl = document.getElementById("time");
+const input = document.getElementById("minutes");
 
 const radius = 90;
 const circumference = 2 * Math.PI * radius;
 
 progress.style.strokeDasharray = circumference;
 
+
+function formatTime(seconds) {
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = seconds % 60;
+
+  if (h > 0) {
+    return `${h}:${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
+  }
+
+  return `${m}:${s.toString().padStart(2, "0")}`;
+}
+
 function update() {
-  let m = Math.floor(time / 60);
-  let s = time % 60;
-  timeEl.textContent = `${m}:${s.toString().padStart(2,"0")}`;
+  timeEl.textContent = formatTime(time);
 
   let percent = time / total;
   progress.style.strokeDashoffset = circumference * (1 - percent);
 }
 
+function getMinutes() {
+  let minutes = parseInt(input.value);
+  return isNaN(minutes) || minutes <= 0 ? 25 : minutes;
+}
+
 function start() {
   if (interval) return;
 
-  total = document.getElementById("minutes").value * 60;
+  total = getMinutes() * 60;
   if (time > total) time = total;
 
   interval = setInterval(() => {
     if (time <= 0) {
       clearInterval(interval);
       interval = null;
+
       sessions++;
       document.getElementById("sessions").textContent = sessions;
-      alert("Session Complete 🔥");
+
+      timeEl.textContent = "Done!";
       return;
     }
+
     time--;
     update();
   }, 1000);
@@ -48,9 +68,52 @@ function pause() {
 function reset() {
   clearInterval(interval);
   interval = null;
-  time = document.getElementById("minutes").value * 60;
+
+  time = getMinutes() * 60;
   total = time;
+
   update();
 }
+
+
+input.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowUp") {
+    e.preventDefault();
+    input.value = parseInt(input.value || 0) + 1;
+    reset();
+  }
+
+  if (e.key === "ArrowDown") {
+    e.preventDefault();
+    input.value = Math.max(1, parseInt(input.value || 0) - 1);
+    reset();
+  }
+});
+
+
+input.addEventListener("wheel", (e) => {
+  e.preventDefault();
+
+  let value = parseInt(input.value || 0);
+
+  if (e.deltaY < 0) {
+    value++;
+  } else {
+    value = Math.max(1, value - 1);
+  }
+
+  input.value = value;
+  reset();
+});
+
+
+const today = new Date();
+document.getElementById("currentDay").innerText = today.toLocaleDateString(
+  "en-US",
+  {
+    month: "long",
+    day: "numeric",
+  },
+);
 
 update();
